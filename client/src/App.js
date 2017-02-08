@@ -2,18 +2,40 @@ import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
-    renderHeader() {
-        return <Header/>
+    constructor(){
+        super();
+        this.state = {
+          rate : -1,
+          feedback :"",
+          composerVisible : false
+        };
     }
+
+    rateCallback(rate){
+        this.setState({
+            rate : rate,
+            composerVisible: true
+        });
+        console.log(this.state);
+    }
+
+    feedbackCallback(feedback){
+        this.setState({feedback : feedback});
+    }
+
+    renderHeader() {
+        return <Header rateCallback={this.rateCallback.bind(this)}/>
+}
 
     renderBody() {
-        return <Body/>
+        var style = this.state.composerVisible ? {top:"141px"} : {top:"70px"};
+        return <Body feedbackCallback={this.feedbackCallback.bind(this)} style={style}/>
     }
 
-    handleSubmit(event){
-        console.log('toto')
-        console.log(this);
-        console.log(arguments);
+    handleSubmit(proxy, event){
+        proxy.preventDefault();
+        console.log(this.state);
+        return false;
     }
 
     render() {
@@ -28,7 +50,7 @@ class App extends Component {
 
 class Header extends Component {
     renderRatings() {
-        return <Ratings/>
+        return <Ratings rateCallback={this.props.rateCallback}/>
     }
 
     render() {
@@ -47,15 +69,17 @@ class Header extends Component {
 }
 
 class Ratings extends Component {
-    constructor(){
+    constructor(rate, rateCallback){
         super();
         this.state = {
-            rate : -1
+            rate : rate,
+            rateCallback : rateCallback
         };
     }
 
     rateCallback(rate){
-        this.setState({rate : rate});
+        this.setState({rate: rate});
+        this.props.rateCallback(rate);
     }
 
     renderRates(className, rate, selected) {
@@ -64,12 +88,12 @@ class Ratings extends Component {
 
     render() {
         return (
-            <div className="rate-my-app-messenger-header-ratings-container" ref="ratings">
+            <div className="rate-my-app-messenger-header-ratings-container">
                 {this.renderRates("rate-my-app-rate-very-bad", 0, this.state.rate===0)}
                 {this.renderRates("rate-my-app-rate-bad", 33, this.state.rate===33)}
                 {this.renderRates("rate-my-app-rate-good", 66, this.state.rate===66)}
                 {this.renderRates("rate-my-app-rate-very-good", 100, this.state.rate===100)}
-                <input type="hidden" name="rate" value={this.state.rate} />
+                <input type="hidden" name="rate" ref="ratings" value={this.state.rate} />
             </div>
         );
     }
@@ -83,7 +107,6 @@ class Rate extends Component {
     render() {
         var active = this.props.selected ? "rate-my-app-messenger-header-rate-active" : "" ;
         var className = "rate-my-app-messenger-header-rate "+active +" " + this.props.className;
-        console.log(active);
         return (
             <div className="rate-my-app-messenger-header-rate-container"
                  onClick={this.clickHandler.bind(this)}>
@@ -103,16 +126,15 @@ class Body extends Component {
 
     addFeedback(feedback) {
         this.setState({feedback : feedback});
-        console.log(this.state.feedback);
     }
 
     renderFeedbackComposer() {
-        return <FeedbackComposer addFeedback={this.addFeedback.bind(this)}/>
+        return <FeedbackComposer addFeedback={this.addFeedback.bind(this)} feedbackCallback={this.props.feedbackCallback}/>
     }
 
     render() {
         return (
-            <div className="rate-my-app-messenger-body">
+            <div className="rate-my-app-messenger-body" style={this.props.style}>
                 {this.renderFeedbackComposer()}
             </div>
         );
@@ -129,6 +151,7 @@ class FeedbackComposer extends Component {
 
     onChange(event) {
         this.setState({value: event.target.value});
+        this.props.feedbackCallback(event.target.value);
     }
 
     render() {

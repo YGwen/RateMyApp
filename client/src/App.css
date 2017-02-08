@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+body{
+    background-color:Transparent;
+}
+
 .rate-my-app-messenger {
     position: absolute;
     top: 0;
@@ -100,10 +104,13 @@
 
 .rate-my-app-messenger-body {
     position: absolute;
-    top: 141px;
     bottom: 0;
     left: 0;
     right: 0;
+    transition: top .1s ease-out;
+    -moz-transition: top .1s ease-out ;
+    -webkit-transition: top .1s ease-out;
+    -o-transition: top .1s ease-out;
 }
 
 .rate-my-app-messenger-body-messages-container{
