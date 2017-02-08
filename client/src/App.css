@@ -63,19 +63,19 @@
     background-position: center center;
     cursor: pointer;
     opacity: .5;
-    transition: opacity .5s ease-out;
-    -moz-transition: opacity .5s ease-out;
-    -webkit-transition: opacity .5s ease-out;
-    -o-transition: opacity .5s ease-out;
-    transition: background-size .3s ease-out;
-    -moz-transition: background-size .3s ease-out;
-    -webkit-transition: background-size .3s ease-out;
-    -o-transition: background-size .3s ease-out;
+    transition: background-size .1s ease-out, opacity .5s ease-out;
+    -moz-transition: background-size .1s ease-out , opacity .5s ease-out;
+    -webkit-transition: background-size .1s ease-out, opacity .5s ease-out;
+    -o-transition: background-size .1s ease-out, opacity .5s ease-out;
 }
 
 .rate-my-app-messenger-header-rate:hover {
     opacity:1;
-    background-size:50px 50px;
+    background-size:46px 46px;
+}
+
+.rate-my-app-messenger-header-rate:active{
+    background-size:35px 35px;
 }
 
 .rate-my-app-messenger-header-rate-active{
@@ -157,13 +157,17 @@
     border:1px;
     border-radius:50%;
     background-color:#fa5b35;
-    opacity: .7;
-    transition: opacity .5s ease-out;
-    -moz-transition: opacity .5s ease-out;
-    -webkit-transition: opacity .5s ease-out;
-    -o-transition: opacity .5s ease-out;
+    transition: background-size .1s ease-out, opacity .5s ease-out;
+    -moz-transition: background-size .1s ease-out , opacity .5s ease-out;
+    -webkit-transition: background-size .1s ease-out, opacity .5s ease-out;
+    -o-transition: background-size .1s ease-out, opacity .5s ease-out;
 }
 
 .rate-my-app-messenger-body-feedback-composer-send:hover{
     opacity: 1;
+    background-size: 31px 31px;
+}
+
+.rate-my-app-messenger-body-feedback-composer-send:active {
+    background-size: 35px 35px;
 }
