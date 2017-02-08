@@ -14,7 +14,6 @@ class App extends Component {
         console.log('toto')
         console.log(this);
         console.log(arguments);
-        //event.preventDefault();
     }
 
     render() {
@@ -51,7 +50,7 @@ class Ratings extends Component {
     constructor(){
         super();
         this.state = {
-            rate : 0
+            rate : -1
         };
     }
 
@@ -59,17 +58,17 @@ class Ratings extends Component {
         this.setState({rate : rate});
     }
 
-    renderRates(className, rate) {
-        return <Rate className={className} rate={rate} rateCallback={this.rateCallback.bind(this)}/>
+    renderRates(className, rate, selected) {
+        return <Rate className={className} rate={rate} rateCallback={this.rateCallback.bind(this)} selected={selected}/>
     }
 
     render() {
         return (
             <div className="rate-my-app-messenger-header-ratings-container" ref="ratings">
-                {this.renderRates("rate-my-app-rate-very-bad", 0)}
-                {this.renderRates("rate-my-app-rate-bad", 33)}
-                {this.renderRates("rate-my-app-rate-good", 66)}
-                {this.renderRates("rate-my-app-rate-very-good", 100)}
+                {this.renderRates("rate-my-app-rate-very-bad", 0, this.state.rate===0)}
+                {this.renderRates("rate-my-app-rate-bad", 33, this.state.rate===33)}
+                {this.renderRates("rate-my-app-rate-good", 66, this.state.rate===66)}
+                {this.renderRates("rate-my-app-rate-very-good", 100, this.state.rate===100)}
                 <input type="hidden" name="rate" value={this.state.rate} />
             </div>
         );
@@ -83,8 +82,10 @@ class Rate extends Component {
 
     render() {
         var className = "rate-my-app-messenger-header-rate " + this.props.className;
+        var opacity = this.props.selected ? {opacity:1} : {opacity:0.5};
+        console.log(opacity);
         return (
-            <div className="rate-my-app-messenger-header-rate-container"
+            <div className="rate-my-app-messenger-header-rate-container" style={opacity}
                  onClick={this.clickHandler.bind(this)}>
                 <div className={className}/>
             </div>
@@ -137,7 +138,7 @@ class FeedbackComposer extends Component {
                           value={this.state.value} name="feedback"
                           className="rate-my-app-messenger-body-feedback-composer"
                           placeholder="How can we improve it?"/>
-                <button type="submit" form="feedbackform" value="submit"/>
+                <button className="rate-my-app-messenger-body-feedback-composer-send" type="submit" form="feedbackform" value="submit"/>
             </div>
         );
     }

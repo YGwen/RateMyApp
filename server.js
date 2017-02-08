@@ -1,8 +1,14 @@
 const express = require('express');
 const fs = require('fs');
+var bodyParser = require('body-parser')
+
 
 
 const app = express();
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -12,11 +18,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.post('/api/feedback', (req, res) => {
-
-    console.log(req.query);
-    res.json({
-        query: req.query,
-    });
+    console.log(req.body);
+    res.redirect('/')
     return;
 });
 
