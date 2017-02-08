@@ -81,11 +81,11 @@ class Rate extends Component {
     }
 
     render() {
-        var className = "rate-my-app-messenger-header-rate " + this.props.className;
-        var opacity = this.props.selected ? {opacity:1} : {opacity:0.5};
-        console.log(opacity);
+        var active = this.props.selected ? "rate-my-app-messenger-header-rate-active" : "" ;
+        var className = "rate-my-app-messenger-header-rate "+active +" " + this.props.className;
+        console.log(active);
         return (
-            <div className="rate-my-app-messenger-header-rate-container" style={opacity}
+            <div className="rate-my-app-messenger-header-rate-container"
                  onClick={this.clickHandler.bind(this)}>
                 <div className={className}/>
             </div>

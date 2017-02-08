@@ -59,13 +59,27 @@
     display: inline-block;
     vertical-align: middle;
     background-repeat: no-repeat;
-    background-size: 50px 50px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+    background-size: 45px 45px;
+    background-position: center center;
     cursor: pointer;
+    opacity: .5;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+    transition: background-size .3s ease-out;
+    -moz-transition: background-size .3s ease-out;
+    -webkit-transition: background-size .3s ease-out;
+    -o-transition: background-size .3s ease-out;
 }
 
-.rate-my-app-messenger-header-rate:active {
-    margin-top: 4px;
+.rate-my-app-messenger-header-rate:hover {
+    opacity:1;
+    background-size:50px 50px;
+}
+
+.rate-my-app-messenger-header-rate-active{
+    opacity:1;
 }
 
 .rate-my-app-rate-good {
@@ -143,8 +157,13 @@
     border:1px;
     border-radius:50%;
     background-color:#fa5b35;
+    opacity: .7;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
 }
 
-.rate-my-app-messenger-body-feedback-composer-send:active{
-    margin-top:15px;
+.rate-my-app-messenger-body-feedback-composer-send:hover{
+    opacity: 1;
 }
