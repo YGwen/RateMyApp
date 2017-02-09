@@ -19,7 +19,9 @@ if (process.env.NODE_ENV === 'production') {
 
 app.post('/api/feedback', (req, res) => {
     console.log(req.body);
-    res.redirect('/')
+    res.json({
+        query: req.body,
+    });
     return;
 });
 

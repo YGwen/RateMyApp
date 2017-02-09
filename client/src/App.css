@@ -6,13 +6,38 @@ body{
     background-color:Transparent;
 }
 
-.rate-my-app-messenger {
+.rate-my-app{
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    height:139px;
+    width:370px;
+    background-color:transparent;
+    transition: height .1s ease-out;
+    -moz-transition: height .1s ease-out;
+    -webkit-transition: height .1s ease-out;
+    -o-transition: height .1s ease-out;
+    background-color: transparent;
+}
+
+.rate-my-app-messenger {
+    width:370px;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: left .5s ease-out;
+    -moz-transition: left .5s ease-out;
+    -webkit-transition: left .5s ease-out;
+    -o-transition: left .5s ease-out;
 }
 
 .rate-my-app-messenger-header {
@@ -121,6 +146,7 @@ body{
 .rate-my-app-messenger-body-feedback-composer-container{
     min-height: 55px;
     max-height: 200px;
+    position: relative;
 }
 
 .rate-my-app-messenger-body-feedback-composer{
@@ -177,4 +203,36 @@ body{
 
 .rate-my-app-messenger-body-feedback-composer-send:active {
     background-size: 35px 35px;
+}
+
+.rate-my-app-final{
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:213px;
+    background-color:#fa5b35;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+    transition: top .5s ease-out;
+    -moz-transition: top .5s ease-out;
+    -webkit-transition: top .5s ease-out;
+    -o-transition: top .5s ease-out;
+}
+
+.rate-my-app-final-text-container{
+    background-color: #fff;
+    color:#565867;
+    border-radius:5px;
+    width:200px;
+}
+
+.rate-my-app-final-text-container-title{
+    font-size: 14px;
+    line-height: 1.1em;
+}
+
+.rate-my-app-final-text-container-content{
+    font-size: 13px;
+    line-height: 1.1em;
 }
