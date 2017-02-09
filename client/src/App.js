@@ -4,11 +4,13 @@ import './App.css';
 class App extends Component {
     constructor() {
         super();
+        var context = location.search.split('context=')[1]
         this.state = {
             rate: -1,
             feedback: "",
             composerVisible: false,
-            step: 1
+            step: 1,
+            context : context
         };
     }
 
